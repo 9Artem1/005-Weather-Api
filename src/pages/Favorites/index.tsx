@@ -1,7 +1,7 @@
 
 
 import { Container, Grid } from '@mui/material';
-import { WeatherFavoritesComponent } from '../../components/simple/weatherFavoritesComponent';
+import { WeatherFavoritesComponent } from '../../components/simple/WeatherFavoritesComponent';
 
 export const FavoritesAppHome = () => {
 

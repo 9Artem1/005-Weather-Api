@@ -1,18 +1,18 @@
 import { Action, ThunkAction, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import axios from 'axios';
+import { WeatherState } from '../types/WeatherState';
 
-export interface WeatherState {
-  loading: boolean;
-  error: string | null;
-  city: string | null;
-  coordLat: string |null;
-  coordLon: string |null;
-  weather: string |null;
-  wind: string |null;
-  temperature: number | null;
-
-}
+// interface WeatherState {
+//   loading: boolean;
+//   error: string | null;
+//   city: string | null;
+//   coordLat: string |null;
+//   coordLon: string |null;
+//   weather: string |null;
+//   wind: string |null;
+//   temperature: number | null;
+// }
 
 const initialState: WeatherState = {
   loading: false,

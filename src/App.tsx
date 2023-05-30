@@ -15,10 +15,12 @@ const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 export function DarkModeToogle() {
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
+
+  
   return (
 <>
 {/* {theme.palette.mode} тема */}
-      <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+      <IconButton sx={{ ml: 1 }} disableRipple onClick={colorMode.toggleColorMode} color="inherit">
         {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
 </> 

@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { WeatherAppHome } from "../../pages/Home";
-import { Navbar } from "../../components/Navbar";
+import { Navbar } from "../../components/simple/Navbar";
 import { FavoritesAppHome } from "../../pages/Favorites";
 import { ForecastAppHome } from "../../pages/Forecast";
 
@@ -18,8 +18,9 @@ export const router = createBrowserRouter([
         Component: FavoritesAppHome
       },
       {
-        path: 'forecast/:weatherCity',
-        Component: ForecastAppHome
+        path: 'forecast/:city',
+        Component: ForecastAppHome,
+        
       }
     ]
     }

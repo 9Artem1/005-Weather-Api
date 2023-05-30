@@ -1,5 +1,5 @@
 
-import WeatherApp from '../../components/simple/weatherApp';
+import WeatherApp from '../../components/simple/WeatherApp';
 
 export const WeatherAppHome = () => {
 

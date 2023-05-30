@@ -1,30 +1,11 @@
-import { FC } from 'react';
-import { Button, Card, Container, Grid, Typography, styled } from '@mui/material';
+import { Button, Container, Grid, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../../core/store';
-import { removeFavorite } from '../../../core/types/favoritesSlice';
+import { removeFavorite } from '../../../core/store/favoritesSlice';
+import { WeatherCardFavorite } from './styledWeatherCardFavorite';
 
-const WeatherCard = styled(Card)(({
-  marginTop: '2em',
-  height: '20em',
-  width: '80%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '1em',
-  textAlign: 'center',
-  justifyContent: 'space-between',
-  gap: '5px',
-  '@media (max-width: 768px)': {
-      width: '88%',
-    }
-}));
-
-interface WeatherFavoritesComponentProps {
-}
-
-export const WeatherFavoritesComponent: FC<WeatherFavoritesComponentProps> = ({ }) => {
+export const WeatherFavoritesComponent = ({ }) => {
   const favoriteCities = useSelector((state: RootState) => state.favorites.favoriteCities);
   const dispatch = useAppDispatch();
   
@@ -37,7 +18,7 @@ export const WeatherFavoritesComponent: FC<WeatherFavoritesComponentProps> = ({ 
 
         {favoriteCities.map((city) => (
           <Grid key={city.id} item xs={12} sm={6} md={4}>
-            <WeatherCard>
+            <WeatherCardFavorite>
               <Typography variant="h4" color="#6d737d">{city.city}</Typography>
               <Typography variant="body1">
             <b>координаты:</b> <NavLink style={{ textDecoration: 'none', color: "rgb(129 165 225)" }} to={`https://yandex.ru/maps/?ll=${city.coordLon},${city.coordLat}&z=12`}>
@@ -61,7 +42,8 @@ export const WeatherFavoritesComponent: FC<WeatherFavoritesComponentProps> = ({ 
               >
                 Удалить из избранного
               </Button>
-            </WeatherCard>
+              <Button variant="contained" sx={{ width: '17em' }} size="large" component={NavLink} to={`/forecast/${city.city}`}>Подробнее</Button>
+            </WeatherCardFavorite>
           </Grid>
         ))}
 

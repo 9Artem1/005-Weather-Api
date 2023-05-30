@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import weatherSlice from '../types/weatherSlice';
-import favoritesSlice from '../types/favoritesSlice';
-import weatherForecastSlice from '../types/weatherForecastSlice';
+import weatherSlice from './weatherSlice';
+import favoritesSlice from './favoritesSlice';
+import weatherForecastSlice from './weatherForecastSlice';
 
 
  const store = configureStore({

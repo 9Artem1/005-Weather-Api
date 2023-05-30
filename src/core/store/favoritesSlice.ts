@@ -1,16 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-
-
-interface FavoriteCity {
-  id: string;
-  city: string;
-  coordLat: string;
-  coordLon: string;
-  weather: string;
-  wind: string;
-  temperature: number;
-}
+import { FavoriteCity } from '../types/FavoriteCity';
 
 const STORAGE_KEY = 'favorites';
 

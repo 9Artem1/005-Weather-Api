@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../core/store";
 import { Form } from "react-router-dom";
 import { useForm } from 'react-hook-form';
-import { fetchWeatherData } from "../../core/types/weatherSlice";
+import { fetchWeatherData } from "../../core/store/weatherSlice";
 import { Button, TextField, Typography } from "@mui/material";
 
 const validationRules = {
@@ -18,13 +18,11 @@ const validationRules = {
 export const SearchCityForm = () => {
   const dispatch = useAppDispatch();
   const { loading, error } = useSelector((state: RootState) => state.weather);
-
   const { register, handleSubmit, setValue, formState: { errors, isValid } } = useForm({
     mode: "onChange",
     defaultValues: {
       City: ""
     },
-    
   });
 
   return (

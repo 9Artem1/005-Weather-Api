@@ -10,7 +10,7 @@ import Drawer from '@mui/material/Drawer';
 import { Outlet } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { styled } from '@mui/material';
-import { DarkModeToogle } from './../App';
+import { DarkModeToogle } from '../../../App';
 
 const StyledLink = styled(NavLink)(({ theme }) => ({
   textDecoration: 'none',
@@ -35,7 +35,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" sx={{height: '56px'}}>
         <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-around', width: '100%', maxWidth: '100%' }}>
           <IconButton
             edge="end"
