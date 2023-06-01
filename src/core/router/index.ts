@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
         Component: FavoritesAppHome
       },
       {
-        path: 'forecast/:city',
+        path: '/:city',
         Component: ForecastAppHome,
         
       }

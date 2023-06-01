@@ -3,16 +3,7 @@ import { RootState } from '../store';
 import axios from 'axios';
 import { WeatherState } from '../types/WeatherState';
 
-// interface WeatherState {
-//   loading: boolean;
-//   error: string | null;
-//   city: string | null;
-//   coordLat: string |null;
-//   coordLon: string |null;
-//   weather: string |null;
-//   wind: string |null;
-//   temperature: number | null;
-// }
+
 
 const initialState: WeatherState = {
   loading: false,
@@ -89,13 +80,16 @@ export const fetchWeatherData = (city: string): AppThunk => {
           appid: '9e0511163cdb840b885d6d0ef36c1073', // ваш API-ключ от провайдера
           lang: 'ru', // язык ответа
           units: 'metric', // единицы измерения
-          cnt: '40',
         },
       });
       console.log(response.data);
       // dispatch(getWeatherFailure(error.message));
-    } catch (error) {
-      console.log(error); // выводим ошибку в консоль
+    // } catch (error) {
+
+    //   dispatch(getWeatherFailure(error.message));
+    } catch (error: any) {
+      dispatch(getWeatherFailure(error instanceof Error ? error.message : 'An unknown error occurred'));
+            console.log(error);
     }
   };
 };
@@ -118,8 +112,9 @@ const weatherSlice = createSlice({
       state.temperature = action.payload.temperature;
     },
     getWeatherFailure(state, action) {
-      state.loading = false;
+      state.loading = true;
       state.error = action.payload;
+      state.loading = false;
     },
   },
 });

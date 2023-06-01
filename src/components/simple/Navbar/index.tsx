@@ -35,7 +35,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static" sx={{height: '56px'}}>
+      <AppBar position="static" >
         <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-around', width: '100%', maxWidth: '100%' }}>
           <IconButton
             edge="end"
@@ -46,35 +46,38 @@ export const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
+          <Box sx={{ p: 0, m: 0, display: 'flex', justifyContent: 'center' }}>
+            <Typography
+              variant="h6"
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: 'flex', md: 'flex' },
+                fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif',
+                letterSpacing: '.2rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              Прогноз  погоды
+            </Typography>
+          </Box>
 
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Прогноз погоды
-          </Typography>
-
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', justifyContent: 'flex-end' }}>
             {pages.map(({ to, text }) => (
               <Button
+                href={to}
                 key={to}
-                sx={{ my: 6, color: 'black', display: 'block', marginLeft: '2em', textDecoration: 'none' }}
+                sx={{ my: 2, color: 'inherit', display: 'block', marginLeft: '2em', textDecoration: 'none' }}
               >
-                <StyledLink to={to}>{text}</StyledLink>
+                {text}
               </Button>
             ))}
-            <DarkModeToogle />
+            <Box sx={{ height: 1, ml: 3, display: 'flex', justifyContent: 'center' }}>
+              <DarkModeToogle />
+            </Box>
+
           </Box>
 
         </Toolbar>
@@ -86,14 +89,14 @@ export const Navbar = () => {
         ModalProps={{ keepMounted: true }}
       >
         <Box
-          sx={{ width: '250px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', p: 2}}
+          sx={{ width: '250px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', p: 2 }}
           role="presentation"
           onClick={handleDrawerClose}
         >
-        <DarkModeToogle />
+          <DarkModeToogle />
           {pages.map(({ to, text }) => (
             <Button key={to} style={{ margin: '1em 0' }} >
-              <StyledLink to={to} sx={{color: '#00ADB5'}}>{text}</StyledLink>
+              <StyledLink to={to} sx={{ color: '#00ADB5' }}>{text}</StyledLink>
             </Button>
           ))}
         </Box>

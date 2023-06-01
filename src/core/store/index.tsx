@@ -5,11 +5,11 @@ import favoritesSlice from './favoritesSlice';
 import weatherForecastSlice from './weatherForecastSlice';
 
 
- const store = configureStore({
+const store = configureStore({
   reducer: {
     weather: weatherSlice,
     favorites: favoritesSlice,
-    forecats: weatherForecastSlice
+    forecast: weatherForecastSlice,
   },
 })
 

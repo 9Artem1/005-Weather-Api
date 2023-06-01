@@ -20,7 +20,6 @@ export const deleteFavoritesFromStorage = () => {
     localStorage.removeItem(STORAGE_KEY);
 };
 
-
 type FavoriteCities = FavoriteCity[];
 
 interface InitialState {
@@ -36,17 +35,28 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addFavorite: (state, action) => {
-      const id = uuidv4();
-      const favoriteCity = {
-        id,
-        ...action.payload,
-      };
-      state.favoriteCities.push(favoriteCity);
+      const { payload } = action;
+      const foundCity = state.favoriteCities.find(city => {
+        console.log('city.city', city.city)
+        console.log('payload.city', payload.city)
+        return city.city.toLowerCase() === payload.city.toLowerCase()});
+      if (!foundCity) {
+        const newFavoriteCity = {
+          ...payload,
+          id: uuidv4(),
+        };
+        state.favoriteCities.push(newFavoriteCity);
+      } else {
+        const index = state.favoriteCities.findIndex(city => city.id === foundCity.id);
+        state.favoriteCities[index] = {
+          ...payload,
+          id: foundCity.id,
+        };
+      }
       saveFavoritesToStorage(state.favoriteCities);
-      console.log(favoriteCity);
     },
     removeFavorite: (state, action) => {
-      const index = state.favoriteCities.findIndex((city) => city.id === action.payload);
+      const index = state.favoriteCities.findIndex(city => city.id === action.payload);
       if (index !== -1) {
         state.favoriteCities.splice(index, 1);
         saveFavoritesToStorage(state.favoriteCities);

@@ -115,6 +115,6 @@ export const fetchWeatherForecast = (city: string): AppThunk => async (dispatch)
   dispatch(setForecast(forecast));
 };
 
-export const selectWeatherForecast = (state: RootState) => state.forecats;
+export const selectWeatherForecast = (state: RootState) => state.forecast;
 
 export default weatherForecastSlice.reducer;
